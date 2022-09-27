@@ -1,0 +1,4 @@
+install:
+  - yt-dlp
+  - b2
+  - yubikey-manager

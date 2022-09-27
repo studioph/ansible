@@ -1,0 +1,21 @@
+- block:
+    - name: Create backup group
+      ansible.builtin.group:
+        name: backup
+        state: present
+        system: true
+
+    - name: Add user to groups
+      ansible.builtin.user:
+        append: yes
+        groups: "{{ groups }}"
+  become: true
+
+- name: Create dev folder
+  ansible.builtin.file:
+    path: "{{ dev_folder }}"
+    state: directory
+
+- name: Install repos
+  include_tasks: repos.yml
+  loop: "{{ repos }}"

@@ -1,0 +1,19 @@
+groups:
+  - libvirt
+  - kvm
+  - tty
+  - docker
+  - dialout
+  - syslog
+  - cdrom
+  - backup
+
+dev_folder: "{{ home }}/dev"
+
+repos:
+  - name: dotfiles
+    url: https://github.com/studioph/dotfiles.git
+    post_exec: link.sh
+  - name: configfiles
+    url: https://github.com/studioph/configfiles.git
+    post_exec: link.sh

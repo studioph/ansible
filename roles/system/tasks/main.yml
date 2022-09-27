@@ -1,0 +1,22 @@
+- name: Update system packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: yes
+    autoremove: true
+
+- name: Configure unattended upgrades
+  ansible.builtin.include_role:
+    name: hifis.unattended_upgrades
+  vars:
+    unattended_update_package_list: 7
+
+- name: Fix dual boot Windows clock issue
+  community.general.timezone:
+    hwclock: local
+
+- name: Remove systemd services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: false
+    masked: true
+  loop: "{{ systemd.remove }}"

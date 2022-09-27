@@ -1,0 +1,11 @@
+- name: Configure Workstation
+  hosts: localhost
+  connection: local
+  vars:
+    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+
+  roles:
+    - role: system
+      become: true
+    - packages
+    - user

@@ -1,0 +1,3 @@
+install:
+  - name: dbgate
+    url: https://github.com/dbgate/dbgate/releases/latest/download/dbgate-latest.AppImage

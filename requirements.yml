@@ -1,0 +1,5 @@
+- src: nvidia.nvidia_docker
+- src: stefangweichinger.ansible_rclone
+- src: do1jlr.restic
+- src: gantsign.golang
+- src: hifis.unattended_upgrades
