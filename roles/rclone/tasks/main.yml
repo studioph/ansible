@@ -1,0 +1,17 @@
+- name: Download and extract latest rclone release
+  ansible.builtin.unarchive:
+    src: "{{ url }}"
+    dest: "{{ temp_folder }}"
+    remote_src: true
+
+- name: Move rclone binary to "{{ bin_folder}}"
+  ansible.builtin.copy:
+    src: "{{ temp_folder }}/{{ folder_name }}/rclone"
+    dest: "{{ bin_folder }}/rclone"
+    mode: "{{ permissions }}"
+  become: true
+
+- name: Cleanup temp folder
+  ansible.builtin.file:
+    path: "{{ temp_folder }}/{{ folder_name }}"
+    state: absent
