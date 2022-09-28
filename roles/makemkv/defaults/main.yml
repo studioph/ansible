@@ -1,6 +1,0 @@
-repo:
-  url: ppa:heyarje/makemkv-beta
-
-packages:
-  - makemkv-bin
-  - makemkv-oss
