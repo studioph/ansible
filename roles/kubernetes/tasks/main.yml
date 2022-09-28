@@ -1,0 +1,3 @@
+- name: Install kubectl
+  ansible.builtin.import_role:
+    name: apt-external

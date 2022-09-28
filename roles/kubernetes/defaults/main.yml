@@ -1,0 +1,13 @@
+pubkey:
+  url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+  filename: kubernetes.gpg
+
+repo:
+  url: https://apt.kubernetes.io/ kubernetes-xenial
+  branch: main
+
+dependencies:
+  - ca-certificates
+
+packages:
+  - kubectl
