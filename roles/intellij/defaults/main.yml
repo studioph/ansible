@@ -1,0 +1,5 @@
+repo:
+  url: ppa:mmk2410/intellij-idea
+
+packages:
+  - intellij-idea-community
