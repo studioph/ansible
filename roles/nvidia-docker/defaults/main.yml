@@ -1,0 +1,10 @@
+pubkey:
+  url: https://nvidia.github.io/libnvidia-container/gpgkey
+  filename: nvidia-container.asc
+
+repo:
+  url: "https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/{{ arch }}"
+  branch: "/"
+
+packages:
+  - nvidia-docker2
