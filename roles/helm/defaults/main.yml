@@ -1,0 +1,10 @@
+pubkey:
+  url: https://baltocdn.com/helm/signing.asc
+  filename: helm.asc
+
+repo:
+  url: https://baltocdn.com/helm/stable/debian/ all
+  branch: main
+
+packages:
+  - helm
