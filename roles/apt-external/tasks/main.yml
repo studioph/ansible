@@ -1,0 +1,50 @@
+- become: true
+  block:
+    - name: Install dependencies ("{{ item.name }}")
+      when: dependencies is defined
+      ansible.builtin.apt:
+        name: "{{ item.dependencies }}"
+        state: present
+        update_cache: true
+
+    - name: Ensure apt keyrings folder is created
+      ansible.builtin.file:
+        path: "{{ apt.keyrings.path }}"
+        state: directory
+        mode: "{{ apt.keyrings.perms.folder }}"
+
+    - name: Add non-ppa repo ("{{ item.name }}")
+      when: item.pubkey is defined
+      vars:
+        keyfile: "{{ apt.keyrings.path }}/{{ item.pubkey.filename }}"
+      block:
+        - name: Add repo GPG key ("{{ item.name }}")
+          ansible.builtin.get_url:
+            url: "{{ item.pubkey.url }}"
+            dest: "{{ keyfile }}"
+            mode: "{{ apt.keyrings.perms.file }}"
+
+        - name: Add repo ("{{ item.name }}")
+          ansible.builtin.apt_repository:
+            repo: "deb [arch={{ arch }} signed-by={{ keyfile }}] {{ item.repo.url }} {{ item.repo.branch }}"
+            state: present
+            update_cache: true
+
+        - name: Add src repo ("{{ item.name }}")
+          when: repo.src is defined
+          ansible.builtin.apt_repository:
+            repo: "deb-src [arch={{ arch }} signed-by={{ keyfile }}] {{ item.repo.url }} {{ item.repo.branch }}"
+            state: present
+            update_cache: true
+
+    - name: Add PPA ("{{ item.name }}")
+      when: pubkey is not defined
+      ansible.builtin.apt_repository:
+        repo: "{{ item.repo.url }}"
+        state: present
+        update_cache: true
+
+    - name: Install packages ("{{ item.name }}")
+      ansible.builtin.apt:
+        name: "{{ item.packages }}"
+        state: present

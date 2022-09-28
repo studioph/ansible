@@ -1,0 +1,8 @@
+apt:
+  keyrings:
+    path: /etc/apt/keyrings
+    perms:
+      folder: 0755
+      file: 0600
+
+arch: amd64
