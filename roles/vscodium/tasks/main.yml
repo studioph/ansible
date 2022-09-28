@@ -1,0 +1,19 @@
+- name: Install VSCodium
+  ansible.builtin.import_role:
+    name: apt-external
+
+- name: Install extensions
+  ansible.builtin.command:
+    cmd: codium
+    argv:
+      - --install-extension
+      - "{{ item }}"
+  register: result
+  changed_when: "'already installed' not in result.stdout"
+  loop: "{{ extensions }}"
+
+- name: Install settings.json
+  ansible.builtin.get_url:
+    url: "{{ settings_file.url }}"
+    dest: "{{ settings_file.dest }}"
+    force: true

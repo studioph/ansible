@@ -1,0 +1,14 @@
+pubkey:
+  url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+  filename: vscodium.asc
+
+repo:
+  url: https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium
+  branch: main
+
+packages:
+  - codium
+
+settings_file:
+  url: https://raw.githubusercontent.com/studioph/configfiles/main/.config/VSCodium/User/settings.json
+  dest: "{{ home_folder }}/.config/VSCodium/User/settings.json"
