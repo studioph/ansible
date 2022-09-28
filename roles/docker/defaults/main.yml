@@ -1,0 +1,17 @@
+repo:
+  url: https://download.docker.com/linux/ubuntu
+  branch: stable
+
+pubkey:
+  url: https://download.docker.com/linux/ubuntu/gpg
+  filename: docker.gpg
+
+dependencies:
+  - ca-certificates
+  - gnupg
+
+packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin
