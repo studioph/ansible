@@ -1,0 +1,4 @@
+temp_folder: /tmp
+permissions: 0755
+bin_folder: "{{ home_folder }}/.local/bin"
+needs_root: false

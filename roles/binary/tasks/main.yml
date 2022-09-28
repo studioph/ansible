@@ -1,0 +1,12 @@
+- name: Ensure bin folder is created
+  ansible.builtin.file:
+    path: "{{ bin_folder }}"
+    state: directory
+    mode: "{{ permissions }}"
+
+- name: Download latest "{{ name }}" release
+  ansible.builtin.get_url:
+    url: "{{ url }}"
+    dest: "{{ bin_folder }}/{{ name }}"
+    mode: "{{ permissions }}"
+  become: "{{ true if needs_root else false }}"
