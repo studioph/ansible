@@ -1,5 +1,0 @@
-version: 0.14.0
-asset_name: "restic_{{ version }}_linux_amd64"
-url: "https://github.com/restic/restic/releases/download/v{{ version }}/{{ asset_name }}.bz2"
-bin_folder: /usr/local/bin
-permissions: 0755
