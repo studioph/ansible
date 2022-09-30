@@ -1,11 +1,8 @@
-- name: Load values
-  include_vars:
-    file: appimage.yml
-    name: appimage
+---
 
 - name: Download "{{ item.name }}" appimage
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.dest | default(local_bin) }}/{{ item.name }}.AppImage"
-    mode: 0755
+    mode: "{{ bin.permissions }}"
   loop: "{{ appimage.install }}"

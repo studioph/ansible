@@ -1,13 +1,4 @@
-local_bin: "{{ home }}/.local/bin"
-usr_local_bin: /usr/local/bin
-apt_keyring: /etc/apt/keyrings
-arch: amd64
+---
 
 nodejs:
   version: 16
-
-aws:
-  cli:
-    install_dir: "{{ home }}/.local/share/aws-cli"
-    bin_dir: "{{ local_bin }}"
-    update: false

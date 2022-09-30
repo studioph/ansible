@@ -1,0 +1,4 @@
+---
+snap:
+  remove:
+    - firefox
