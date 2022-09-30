@@ -1,0 +1,12 @@
+nvidia_docker:
+  pubkey:
+    url: https://nvidia.github.io/libnvidia-container/gpgkey
+    filename: nvidia-container.asc
+
+  repo: https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64 /
+
+  packages:
+    - nvidia-docker2
+
+  handlers:
+    - Restart docker

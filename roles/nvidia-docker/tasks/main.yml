@@ -1,5 +1,5 @@
 - name: Install nvidia container toolkit
   ansible.builtin.import_role:
     name: apt-external
-  notify:
-    - Restart docker
+  vars:
+    item: "{{ nvidia_docker }}"
