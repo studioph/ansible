@@ -1,0 +1,16 @@
+docker:
+  dependencies:
+  - ca-certificates
+  - gnupg
+
+  packages:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose-plugin
+
+  repo: https://download.docker.com/linux/ubuntu stable
+
+  pubkey:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    filename: docker.gpg

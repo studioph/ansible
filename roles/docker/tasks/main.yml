@@ -1,5 +1,12 @@
 - name: Install docker
   ansible.builtin.import_role:
     name: apt-external
-  notify:
-    - Add user to docker group
+  vars:
+    item: "{{ docker }}"
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: true
+  become: true
