@@ -1,5 +1,0 @@
-version: 1.59.2
-folder_name: "rclone-v{{ version }}-linux-amd64"
-url: https://downloads.rclone.org/rclone-current-linux-amd64.zip
-bin_folder: /usr/local/bin
-permissions: 0755
