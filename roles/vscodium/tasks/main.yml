@@ -1,6 +1,8 @@
 - name: Install VSCodium
   ansible.builtin.import_role:
     name: apt-external
+  vars:
+    item: "{{ vscodium }}"
 
 - name: Install extensions
   ansible.builtin.command:
@@ -10,10 +12,11 @@
       - "{{ item }}"
   register: result
   changed_when: "'already installed' not in result.stdout"
-  loop: "{{ extensions }}"
+  loop: "{{ vscodium.extensions }}"
 
+# TODO
 - name: Install settings.json
   ansible.builtin.get_url:
-    url: "{{ settings_file.url }}"
-    dest: "{{ settings_file.dest }}"
+    url: "{{ vscodium.settings_file.url }}"
+    dest: "{{ vscodium.settings_file.dest }}"
     force: true

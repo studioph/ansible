@@ -1,52 +1,9 @@
-extensions:
-  - amazonwebservices.aws-toolkit-vscode
-  - coolbear.systemd-unit-file
-  - cschleiden.vscode-github-actions
-  - cschlosser.doxdocgen
-  - dbaeumer.vscode-eslint
-  - dsznajder.es7-react-js-snippets
-  - eamodio.gitlens
-  - ecmel.vscode-html-css
-  - esbenp.prettier-vscode
-  - firefox-devtools.vscode-firefox-debug
-  - foxundermoon.shell-format
-  - GitHub.vscode-pull-request-github
-  - GitLab.gitlab-workflow
-  - golang.go
-  - hbenl.test-adapter-converter
-  - hbenl.vscode-test-explorer
-  - hediet.vscode-drawio
-  - kodetech.electron-debug
-  - littlefoxteam.vscode-python-test-adapter
-  - mads-hartmann.bash-ide-vscode
-  - manuth.eslint-language-service
-  - mechatroner.rainbow-csv
-  - ms-azuretools.vscode-docker
-  - ms-kubernetes-tools.vscode-kubernetes-tools
-  - ms-python.python
-  - ms-python.vscode-pylance
-  - ms-toolsai.jupyter
-  - ms-toolsai.jupyter-keymap
-  - ms-toolsai.jupyter-renderers
-  - ms-vscode.hexeditor
-  - msjsdiag.debugger-for-chrome
-  - muhammad-sammy.csharp
-  - nickmillerdev.pytest-fixtures
-  - njpwerner.autodocstring
-  - octref.vetur
-  - PKief.material-icon-theme
-  - redhat.java
-  - redhat.vscode-commons
-  - redhat.vscode-xml
-  - redhat.vscode-yaml
-  - ritwickdey.LiveServer
-  - rust-lang.rust
-  - samuelcolvin.jinjahtml
-  - tamasfe.even-better-toml
-  - timonwong.shellcheck
-  - twxs.cmake
-  - Tyriar.sort-lines
-  - vscjava.vscode-java-debug
-  - vscjava.vscode-maven
-  - wengerk.highlight-bad-chars
-  - yzhang.markdown-all-in-one
+vscodium:
+  pubkey:
+    url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+    filename: vscodium.asc
+
+  repo: https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main
+
+  packages:
+    - codium
