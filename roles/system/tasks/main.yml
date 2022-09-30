@@ -5,12 +5,11 @@
     autoremove: true
 
 - name: Configure unattended upgrades
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: hifis.unattended_upgrades
-  vars:
-    unattended_update_package_list: 7
 
 - name: Fix dual boot Windows clock issue
+  when: dualboot
   community.general.timezone:
     hwclock: local
 
