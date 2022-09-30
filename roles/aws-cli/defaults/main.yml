@@ -1,0 +1,7 @@
+aws:
+  cli:
+    install_dir: "{{ home }}/.local/share/aws-cli"
+    bin_dir: "{{ local_bin }}"
+    update: false
+
+temp_folder: /tmp

@@ -1,0 +1,42 @@
+---
+# Installs the AWS cli v2
+
+- name: Check if AWS cli is already installed
+  ansible.builtin.command:
+    cmd: which
+    argv:
+      - aws
+  register: result
+
+- name: Install or update AWS cli v2
+  when: aws.cli.update or result.rc != 0
+  block:
+    - name: Ensure install and bin dirs are created
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0755
+      loop:
+        - "{{ aws.cli.install_dir }}"
+        - "{{ aws.cli.bin_dir }}"
+
+    - name: Download awscli v2
+      ansible.builtin.unarchive:
+        src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        remote_src: true
+        dest: "{{ temp_folder }}"
+
+    - name: Install awscli v2
+      ansible.builtin.command:
+        cmd: "{{ temp_folder }}/aws/install"
+        argv:
+          - --install-dir
+          - "{{ aws.cli.install_dir }}"
+          - --bin-dir
+          - "{{ aws.cli.bin_dir }}"
+          - "{{ '--update' if aws.cli.update else omit }}"
+
+    - name: Cleanup temp folder
+      ansible.builtin.file:
+        path: "{{ temp_folder }}/aws"
+        state: absent
