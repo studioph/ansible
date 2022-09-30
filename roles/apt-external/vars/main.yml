@@ -1,0 +1,5 @@
+apt:
+  keyrings:
+    permissions:
+      folder: 0750
+      file: 0600

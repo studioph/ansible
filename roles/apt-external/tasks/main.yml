@@ -1,50 +1,25 @@
 - become: true
   block:
-    - name: Install dependencies ("{{ name }}")
-      when: dependencies is defined
-      ansible.builtin.apt:
-        name: "{{ dependencies }}"
-        state: present
-        update_cache: true
+    - name: Initial tasks
+      ansible.builtin.import_tasks:
+        file: pre.yml
 
-    - name: Ensure apt keyrings folder is created
-      ansible.builtin.file:
-        path: "{{ apt.keyrings.path }}"
-        state: directory
-        mode: "{{ apt.keyrings.perms.folder }}"
-
-    - name: Add non-ppa repo ("{{ name }}")
-      when: pubkey is defined
+    - name: Add non-ppa repo ("{{ item.name }}")
+      when: item.pubkey is defined
       vars:
-        keyfile: "{{ apt.keyrings.path }}/{{ pubkey.filename }}"
-      block:
-        - name: Add repo GPG key ("{{ name }}")
-          ansible.builtin.get_url:
-            url: "{{ pubkey.url }}"
-            dest: "{{ keyfile }}"
-            mode: "{{ apt.keyrings.perms.file }}"
+        keyfile: "{{ apt.keyrings.path }}/{{ item.pubkey.filename }}"
+      ansible.builtin.include_tasks:
+        file: non-ppa.yml
 
-        - name: Add repo ("{{ name }}")
-          ansible.builtin.apt_repository:
-            repo: "deb [arch={{ arch }} signed-by={{ keyfile }}] {{ repo.url }} {{ repo.branch }}"
-            state: present
-            update_cache: true
-
-        - name: Add src repo ("{{ name }}")
-          when: repo.src is defined
-          ansible.builtin.apt_repository:
-            repo: "deb-src [arch={{ arch }} signed-by={{ keyfile }}] {{ repo.url }} {{ repo.branch }}"
-            state: present
-            update_cache: true
-
-    - name: Add PPA ("{{ name }}")
-      when: pubkey is not defined
+    - name: Add PPA ("{{ item.name }}")
+      when: item.pubkey is not defined
       ansible.builtin.apt_repository:
-        repo: "{{ repo.url }}"
+        repo: "{{ item.repo }}"
         state: present
         update_cache: true
 
-    - name: Install packages ("{{ name }}")
+    - name: Install packages ("{{ item.name }}")
       ansible.builtin.apt:
-        name: "{{ packages }}"
+        name: "{{ item.packages }}"
         state: present
+      notify: "{{ item.handlers if item.handlers is defined else omit }}"

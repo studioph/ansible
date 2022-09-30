@@ -1,0 +1,20 @@
+---
+
+- name: Add repo GPG key ("{{ item.name }}")
+  ansible.builtin.get_url:
+    url: "{{ item.pubkey.url }}"
+    dest: "{{ keyfile }}"
+    mode: "{{ apt.keyrings.permissions.file }}"
+
+- name: Add repo ("{{ item.name }}")
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by={{ keyfile }}] {{ item.repo }}"
+    state: present
+    update_cache: true
+
+- name: Add src repo ("{{ item.name }}")
+  when: item.repo.src is defined
+  ansible.builtin.apt_repository:
+    repo: "deb-src [signed-by={{ keyfile }}] {{ item.repo }}"
+    state: present
+    update_cache: true

@@ -1,0 +1,12 @@
+- name: Install dependencies ("{{ item.name }}")
+  when: item.dependencies is defined
+  ansible.builtin.apt:
+    name: "{{ item.dependencies }}"
+    state: present
+    update_cache: true
+
+- name: Ensure apt keyrings folder is created
+  ansible.builtin.file:
+    path: "{{ apt.keyrings.path }}"
+    state: directory
+    mode: "{{ apt.keyrings.permissions.folder }}"
