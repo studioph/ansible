@@ -1,0 +1,15 @@
+---
+
+- name: Download and extract latest "{{ item.name }}" release
+  ansible.builtin.unarchive:
+    src: "{{ item.url }}"
+    dest: "{{ temp_folder }}"
+    remote_src: true
+  notify: Cleanup temp folder
+
+- name: Copy "{{ item.name }}" binary to "{{ item.bin_folder }}"
+  ansible.builtin.copy:
+    src: "{{ temp_folder }}/{{ bin_path }}"
+    dest: "{{ item.bin_folder }}/{{ item.name }}"
+    mode: "{{ bin.permissions }}"
+  become: "{{ true if item.needs_root else false }}"

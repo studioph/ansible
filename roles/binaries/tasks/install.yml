@@ -1,0 +1,22 @@
+---
+
+- name: Check if "{{ item.name }}" already exists
+  ansible.builtin.cmd:
+    cmd: which
+    argv: 
+      - "{{ item.name }}"
+  register: result
+
+- when: result.rc != 0
+  block:
+    - name: Ensure "{{ item.bin_folder }}" is created
+      ansible.builtin.file:
+        path: "{{ item.bin_folder }}"
+        state: directory
+        mode: 0755
+
+    - name: Download latest "{{ item.name }}" release to "{{ item.bin_folder }}"
+      ansible.builtin.get_url:
+        url: "{{ item.url }}"
+        dest: "{{ item.bin_folder }}/{{ item.name }}"
+        mode: 0755
