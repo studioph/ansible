@@ -7,12 +7,5 @@ add_groups:
   - syslog
   - cdrom
 
-dev_folder: "{{ home_folder }}/dev"
-
-repos:
-  - name: dotfiles
-    url: https://github.com/studioph/dotfiles.git
-    post_exec: link.sh
-  - name: configfiles
-    url: https://github.com/studioph/configfiles.git
-    post_exec: link.sh
+dotfiles_repo_url: https://github.com/studioph/dotfiles.git
+dotfiles_repo_name: dotfiles

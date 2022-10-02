@@ -7,11 +7,8 @@
     user: "{{ user }}"
   become: true
 
-# - name: Create dev folder
-#   ansible.builtin.file:
-#     path: "{{ dev_folder }}"
-#     state: directory
-
-# - name: Install repos
-#   include_tasks: repos.yml
-#   loop: "{{ repos }}"
+- name: Install dotfiles
+  ansible.builtin.import_tasks:
+    file: dotfiles.yml
+  vars:
+    repo_path: "{{ dev_folder }}/{{ dotfiles_repo_name }}"

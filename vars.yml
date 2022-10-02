@@ -1,2 +1,5 @@
 home_folder: "{{ lookup('ansible.builtin.env', 'HOME') }}"
 user: "{{ lookup('ansible.builtin.env', 'USER') }}"
+dev_folder: "{{ home_folder }}/dev"
+settings_repo_url: https://github.com/studioph/configfiles.git
+settings_repo_name: configfiles

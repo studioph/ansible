@@ -1,0 +1,21 @@
+---
+
+- name: Ensure dev folder is created
+  ansible.builtin.file:
+    path: "{{ dev_folder }}"
+    state: directory
+
+- name: Clone dotfiles repo
+  ansible.builtin.git:
+    repo: "{{ dotfiles_repo_url }}"
+    dest: "{{ repo_path }}"
+
+- name: Load vars
+  ansible.builtin.include_vars:
+    file: "{{ repo_path }}/vars.yml"
+
+- name: Install dotfiles
+  ansible.builtin.include_tasks:
+    file: "{{ repo_path }}/tasks.yml"
+  vars:
+    repo_dir: "{{ repo_path }}"

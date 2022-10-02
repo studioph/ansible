@@ -1,9 +1,0 @@
-- name: Clone "{{ item.name }}"
-  ansible.builtin.git:
-    repo: "{{ item.url }}"
-    dest: "{{ dev_folder }}/{{ item.name }}"
-
-- name: Install "{{ item.name }}"
-  ansible.builtin.command:
-    cmd: "{{ dev_folder }}/{{ item.name }}/{{ post_exec }}"
-  when: item.post_exec is defined
