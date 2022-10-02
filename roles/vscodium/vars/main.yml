@@ -1,4 +1,5 @@
-vscodium:
+vscodium_spec:
+  name: vscodium
   pubkey:
     url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
     filename: vscodium.asc
