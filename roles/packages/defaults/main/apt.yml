@@ -1,0 +1,89 @@
+---
+
+nodejs_version: 16
+
+apt_packages_remove:
+  - firefox
+  - libreoffice
+  - popularity-contest
+  - ubuntu-advantage-tools
+  - wbrazilian
+  - wbritish
+  - wfrench
+apt_packages_install:
+  - adb
+  - bridge-utils
+  - cifs-utils
+  - clang
+  - cmake
+  - curl
+  - dotnet-sdk-6.0
+  - fastboot
+  - ffmpeg
+  - flatpak
+  - g++
+  - gcc
+  - gdb
+  - git
+  - gtkterm
+  - latte-dock
+  - libvirt-clients
+  - libvirt-daemon-system
+  - lldb
+  - llvm
+  - lm-sensors
+  - lshw
+  - lsscsi
+  - make
+  - net-tools
+  - nfs-common
+  - nmap
+  - open-iscsi
+  - openjdk-11-jdk
+  - openssl
+  - pciutils
+  - pypy3
+  - python3-pip
+  - python3-venv
+  - python3-yubikey-manager
+  - qemu
+  - qemu-kvm
+  - rsync
+  - software-properties-common
+  - sqlite3
+  - tesseract-ocr-eng
+  - traceroute
+  - unrar
+  - unzip
+  - util-linux
+  - wine
+  - winetricks
+apt_packages_external:
+  - name: kubernetes
+    dependencies:
+      - ca-certificates
+    pubkey:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      filename: kubernetes.gpg
+    repo: https://apt.kubernetes.io/ kubernetes-xenial main
+    packages:
+      - kubectl
+  - name: helm
+    pubkey:
+      url: https://baltocdn.com/helm/signing.asc
+      filename: helm.asc
+    repo: https://baltocdn.com/helm/stable/debian/ all main
+    packages:
+      - helm
+  # - name: audex
+  #   repo: ppa:tomtomtom/audex
+  #   pkgs:
+  #     - audex
+  - name: nodejs
+    pubkey:
+      url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      filename: nodesource.asc
+    repo: https://deb.nodesource.com/node_{{ nodejs_version }}.x {{ ansible_distribution_release }} main
+    src: true
+    packages:
+      - nodejs

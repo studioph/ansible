@@ -1,17 +1,12 @@
-- name: Load values
-  include_vars:
-    file: flatpak.yml
-    name: flatpak
+---
 
 - name: Add flathub remote
   community.general.flatpak_remote:
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    method: user
 
 - name: Install flatpaks
   community.general.flatpak:
-    name: "{{ flatpak.install }}"
+    name: "{{ flatpak_install }}"
     state: present
-    method: user

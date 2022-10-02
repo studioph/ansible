@@ -1,0 +1,4 @@
+---
+pipx_install:
+  - yt-dlp
+  - b2

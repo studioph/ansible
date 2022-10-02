@@ -5,4 +5,4 @@
     url: "{{ item.url }}"
     dest: "{{ item.dest | default(local_bin) }}/{{ item.name }}.AppImage"
     mode: "{{ bin.permissions }}"
-  loop: "{{ appimage.install }}"
+  loop: "{{ appimage_install }}"

@@ -1,22 +1,19 @@
-- block:
+---
+# Manage installation of various packages
+
+- become: true
+  block:
     - name: Manage debs
-      include_tasks: apt.yml
+      ansible.builtin.import_tasks: apt.yml
 
     - name: Manage snaps
-      include_tasks: snap.yml
-  become: true
+      ansible.builtin.import_tasks: snap.yml
 
 - name: Manage flatpaks
-  include_tasks: flatpak.yml
-
-- name: Manage binaries
-  include_tasks: binary.yml
+  ansible.builtin.import_tasks: flatpak.yml
 
 - name: Manage pipx
-  include_tasks: pipx.yml
+  ansible.builtin.import_tasks: pipx.yml
 
-- name: Manage AppImages
-  include_tasks: appimage.yml
-
-- name: Manage custom
-  include_tasks: custom.yml
+# - name: Manage AppImages
+#   ansible.builtin.include_tasks: appimage.yml

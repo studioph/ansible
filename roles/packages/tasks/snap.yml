@@ -1,9 +1,6 @@
-- name: Load values
-  include_vars:
-    file: snap.yml
-    name: snap
+---
 
 - name: Remove snaps
   community.general.snap:
-    name: "{{ snap.remove }}"
+    name: "{{ snap_remove }}"
     state: absent

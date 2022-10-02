@@ -1,7 +1,4 @@
-- name: Load values
-  include_vars:
-    file: pipx.yml
-    name: pipx
+---
 
 - name: Install pipx
   ansible.builtin.pip:
@@ -10,5 +7,7 @@
 
 - name: Install pipx packages
   community.general.pipx:
-    name: "{{ pipx.install }}"
+    name: "{{ item }}"
     state: present
+    install_deps: true
+  loop: "{{ pipx_install }}"

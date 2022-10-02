@@ -1,25 +1,19 @@
-- name: Load values
-  include_vars:
-    file: apt.yml
-    name: apt
+---
 
 - name: Remove unwanted apt packages
   ansible.builtin.apt:
-    name: "{{ apt.remove }}"
+    name: "{{ apt_packages_remove }}"
     state: absent
     clean: true
     purge: true
 
 - name: Install apt packages
   ansible.builtin.apt:
-    name: "{{ apt.install }}"
+    name: "{{ apt_packages_install }}"
     state: present
     update_cache: true
 
 - name: Install apt packages from external repos
-  include_tasks: apt_external.yml
-  loop: "{{ apt.external }}"
-
-- name: Install nvidia-docker
   ansible.builtin.include_role:
-    name: nvidia.nvidia_docker
+    name: apt-external
+  loop: "{{ apt_packages_external }}"
