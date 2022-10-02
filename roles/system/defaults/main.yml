@@ -1,7 +1,6 @@
-systemd:
-  remove:
-    - ubuntu-advantage
-    - ua-reboot-cmds
-    - ua-timer
+systemd_remove:
+  - ubuntu-advantage
+  - ua-reboot-cmds
+  - ua-timer
 
 dualboot: false
