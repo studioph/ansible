@@ -4,16 +4,12 @@
 - name: Install binaries
   ansible.builtin.include_tasks:
     file: install.yml
-  loop: "{{ bin.install }}"
+  loop: "{{ bin_install }}"
 
 - name: Install rclone
   ansible.builtin.import_role:
     name: stefangweichinger.ansible_rclone
-  vars:
-    rclone_version: "{{ rclone.version }}"
 
 - name: Install restic
   ansible.builtin.import_role:
     name: do1jlr.restic
-  vars:
-    restic_version: "{{ restic.version }}"

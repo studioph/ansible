@@ -1,13 +1,16 @@
 ---
 
 - name: Check if "{{ item.name }}" already exists
-  ansible.builtin.cmd:
-    cmd: which
-    argv: 
+  ansible.builtin.command:
+    argv:
+      - which
       - "{{ item.name }}"
   register: result
+  changed_when: false
+  failed_when: result.rc not in [0,1]
 
-- when: result.rc != 0
+- name: Install "{{ item.name }}"
+  when: result.rc != 0
   block:
     - name: Ensure "{{ item.bin_folder }}" is created
       ansible.builtin.file:
