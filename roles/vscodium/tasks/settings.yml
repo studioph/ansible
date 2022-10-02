@@ -1,0 +1,18 @@
+---
+
+- name: Ensure dev folder is created
+  ansible.builtin.file:
+    path: "{{ dev_folder }}"
+    state: directory
+
+- name: Clone settings repo
+  ansible.builtin.git:
+    repo: "{{ settings_repo_url }}"
+    dest: "{{ dev_folder }}/{{ settings_repo_name }}"
+
+- name: Link settings.json
+  ansible.builtin.file:
+    path: "{{ home_folder }}/{{ vscodium_settings_path }}"
+    src: "{{ dev_folder }}/{{ settings_repo_name }}/{{ vscodium_settings_path }}"
+    state: link
+    force: true

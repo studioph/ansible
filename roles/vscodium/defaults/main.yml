@@ -1,6 +1,4 @@
-vscodium_settings:
-  url: https://raw.githubusercontent.com/studioph/configfiles/main/.config/VSCodium/User/settings.json
-  dest: "{{ home_folder }}/.config/VSCodium/User/settings.json"
+vscodium_settings_path: .config/VSCodium/User/settings.json
 
 vscodium_extensions:
   - amazonwebservices.aws-toolkit-vscode

@@ -15,9 +15,6 @@
   loop: "{{ vscodium_extensions }}"
   ignore_errors: true
 
-# TODO
-# - name: Install settings.json
-#   ansible.builtin.get_url:
-#     url: "{{ vscodium.settings_file.url }}"
-#     dest: "{{ vscodium.settings_file.dest }}"
-#     force: true
+- name: Install VSCodium settings
+  ansible.builtin.import_tasks:
+    file: settings.yml
