@@ -1,7 +1,8 @@
-docker:
+docker_spec:
+  name: docker
   dependencies:
-  - ca-certificates
-  - gnupg
+    - ca-certificates
+    - gnupg
 
   packages:
     - docker-ce
@@ -9,8 +10,8 @@ docker:
     - containerd.io
     - docker-compose-plugin
 
-  repo: https://download.docker.com/linux/ubuntu stable
+  repo: "https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
   pubkey:
     url: https://download.docker.com/linux/ubuntu/gpg
-    filename: docker.gpg
+    filename: docker.asc
