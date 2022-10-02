@@ -1,4 +1,4 @@
-groups:
+add_groups:
   - libvirt
   - kvm
   - tty
@@ -6,9 +6,8 @@ groups:
   - dialout
   - syslog
   - cdrom
-  - backup
 
-dev_folder: "{{ home }}/dev"
+dev_folder: "{{ home_folder }}/dev"
 
 repos:
   - name: dotfiles
