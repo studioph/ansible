@@ -1,0 +1,4 @@
+---
+rustup_url: https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init
+
+temp_folder: /tmp
