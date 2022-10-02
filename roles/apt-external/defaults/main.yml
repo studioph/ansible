@@ -1,3 +1,1 @@
-apt:
-  keyrings:
-    path: /etc/apt/keyrings
+apt_keyrings_path: /etc/apt/keyrings

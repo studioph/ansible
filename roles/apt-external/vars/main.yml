@@ -1,5 +1,2 @@
-apt:
-  keyrings:
-    permissions:
-      folder: 0750
-      file: 0600
+apt_keyrings_permissions_folder: 0755
+apt_keyrings_permissions_file: 0644

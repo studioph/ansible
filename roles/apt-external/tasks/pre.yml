@@ -1,4 +1,4 @@
-- name: Install dependencies ("{{ item.name }}")
+- name: Install dependencies for "{{ item.name }}"
   when: item.dependencies is defined
   ansible.builtin.apt:
     name: "{{ item.dependencies }}"
@@ -7,6 +7,8 @@
 
 - name: Ensure apt keyrings folder is created
   ansible.builtin.file:
-    path: "{{ apt.keyrings.path }}"
+    path: "{{ apt_keyrings_path }}"
     state: directory
-    mode: "{{ apt.keyrings.permissions.folder }}"
+    mode: "{{ apt_keyrings_permissions_folder }}"
+    owner: root
+    group: root

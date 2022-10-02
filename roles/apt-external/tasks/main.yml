@@ -4,21 +4,21 @@
       ansible.builtin.import_tasks:
         file: pre.yml
 
-    - name: Add non-ppa repo ("{{ item.name }}")
+    - name: Add non-ppa repo for "{{ item.name }}"
       when: item.pubkey is defined
       vars:
-        keyfile: "{{ apt.keyrings.path }}/{{ item.pubkey.filename }}"
+        keyfile: "{{ apt_keyrings_path }}/{{ item.pubkey.filename }}"
       ansible.builtin.include_tasks:
         file: non-ppa.yml
 
-    - name: Add PPA ("{{ item.name }}")
+    - name: Add PPA for "{{ item.name }}"
       when: item.pubkey is not defined
       ansible.builtin.apt_repository:
         repo: "{{ item.repo }}"
         state: present
         update_cache: true
 
-    - name: Install packages ("{{ item.name }}")
+    - name: Install packages for "{{ item.name }}"
       ansible.builtin.apt:
         name: "{{ item.packages }}"
         state: present
