@@ -1,5 +1,21 @@
-repo:
-  url: ppa:mmk2410/intellij-idea
+intellij_spec:
+  name: intellij
+  repo: ppa:mmk2410/intellij-idea
 
-packages:
-  - intellij-idea-community
+  packages:
+    - intellij-idea-community
+
+intellij_plugins:
+  - .env files support
+  - .ignore
+  - AWS Toolkit
+  - CSV
+  - Docker
+  - GraphQL
+  - Ideolog
+  - JPA Buddy
+  - Kotlin
+  - Material Theme UI
+  - Protocol Buffers
+  - Rust
+  - SonarLint
