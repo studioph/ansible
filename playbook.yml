@@ -1,11 +1,21 @@
 - name: Configure Workstation
   hosts: localhost
   connection: local
-  vars:
-    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+  vars_files:
+    - vars.yml
 
   roles:
     - role: system
       become: true
     - packages
+    - docker
+    - nvidia-docker
+    - intellij
+    - vscodium
+    - binaries
+    - aws-cli
+    - role: gantsign.golang
+      golang_install_dir: "{{ home_folder }}/.go"
+    - rust
+    - gantsign.git_credential_manager
     - user
