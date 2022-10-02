@@ -11,6 +11,7 @@
     argv:
       - "{{ temp_folder }}/rustup-init"
       - -y
+      - --no-modify-path
 
 - name: Cleanup temp folder
   ansible.builtin.file:
