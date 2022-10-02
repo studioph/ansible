@@ -1,0 +1,2 @@
+home_folder: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+user: "{{ lookup('ansible.builtin.env', 'USER') }}"
