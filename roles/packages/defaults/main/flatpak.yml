@@ -14,7 +14,6 @@ flatpak_install:
   - com.valvesoftware.Steam
   - net.lutris.Lutris
   - org.flameshot.Flameshot
-  - org.kde.filelight
   - org.kde.kid3
   - org.kde.kolourpaint
   - org.libreoffice.LibreOffice

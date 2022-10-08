@@ -19,6 +19,7 @@ apt_packages_install:
   - curl
   - dotnet-sdk-6.0
   - fastboot
+  - filelight
   - ffmpeg
   - flatpak
   - g++
