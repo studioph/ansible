@@ -1,0 +1,16 @@
+---
+
+- name: Install Nerd Fonts
+  ansible.builtin.import_tasks:
+    file: fonts.yml
+
+- name: Download latest starship
+  ansible.builtin.unarchive:
+    src: "{{ starship_url }}"
+    remote_src: true
+    dest: "{{ local_bin }}"
+    mode: 0755
+
+- name: Install starship config file
+  ansible.builtin.import_tasks:
+    file: settings.yml

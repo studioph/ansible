@@ -17,5 +17,6 @@
     - role: gantsign.golang
       golang_install_dir: "{{ home_folder }}/.go"
     - rust
+    - starship
     - gantsign.git_credential_manager
     - user

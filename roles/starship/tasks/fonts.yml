@@ -1,0 +1,12 @@
+---
+
+- name: Ensure fonts folder is created
+  ansible.builtin.file:
+    path: "{{ fonts_dir }}"
+    state: directory
+
+- name: Download latest Nerd Fonts
+  ansible.builtin.unarchive:
+    src: "{{ nerd_font_url }}"
+    remote_src: true
+    dest: "{{ fonts_dir }}"
