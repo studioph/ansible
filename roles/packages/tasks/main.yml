@@ -3,11 +3,11 @@
 
 - become: true
   block:
-    - name: Manage debs
-      ansible.builtin.import_tasks: apt.yml
-
     - name: Manage snaps
       ansible.builtin.import_tasks: snap.yml
+
+    - name: Manage debs
+      ansible.builtin.import_tasks: apt.yml
 
 - name: Manage flatpaks
   ansible.builtin.import_tasks: flatpak.yml

@@ -6,6 +6,7 @@ apt_packages_remove:
   - firefox
   - libreoffice
   - popularity-contest
+  - snapd
   - ubuntu-advantage-tools
   - wbrazilian
   - wbritish
