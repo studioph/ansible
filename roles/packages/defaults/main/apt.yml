@@ -42,6 +42,7 @@ apt_packages_install:
   - net-tools
   - nfs-common
   - nmap
+  - nvtop
   - open-iscsi
   - openjdk-11-jdk
   - openssl
