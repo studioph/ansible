@@ -27,6 +27,7 @@ apt_packages_install:
   - gcc
   - gdb
   - git
+  - gnome-keyring
   - gtkterm
   - latte-dock
   - libvirt-clients
