@@ -1,6 +1,9 @@
 intellij_spec:
   name: intellij
-  repo: ppa:mmk2410/intellij-idea
+  repo: https://ppa.launchpadcontent.net/mmk2410/intellij-idea/ubuntu jammy main
+  pubkey:
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x88d743200808e359e0a156eff6f9c5299263fb77
+    filename: intellij.asc
 
   packages:
     - intellij-idea-community

@@ -61,6 +61,7 @@ apt_packages_install:
   - unrar
   - unzip
   - util-linux
+  - virt-manager
   - wine
   - winetricks
 apt_packages_external:
@@ -92,3 +93,11 @@ apt_packages_external:
     src: true
     packages:
       - nodejs
+  - name: makemkv
+    pubkey:
+      url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x94b56c64ca7278ecfc34e8808540356019f7e55b
+      filename: makemkv.asc
+    repo: https://ppa.launchpadcontent.net/heyarje/makemkv-beta/ubuntu jammy main
+    packages:
+      - makemkv-bin
+      - makemkv-oss

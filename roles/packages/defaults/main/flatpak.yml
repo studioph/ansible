@@ -8,7 +8,6 @@ flatpak_install:
   - com.github.tchx84.Flatseal
   - com.github.xournalpp.xournalpp
   - com.jgraph.drawio.desktop
-  - com.makemkv.MakeMKV
   - com.nextcloud.desktopclient.nextcloud
   - com.obsproject.Studio
   - com.valvesoftware.Steam
